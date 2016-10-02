@@ -182,12 +182,12 @@ public class LoginMain implements interDao{
 				cus.setCustAIFlag(rs.getString("custAIFlag"));
 				cus.setCreateDate(rs.getString("createDate"));
 				cus.setCreateBy(rs.getString("createBy"));
-				cus.setRecStatus(rs.getString("modDate"));
-				cus.setModDate(rs.getString("modBy"));
+				cus.setModDate(rs.getString("modDate"));
+				cus.setModBy(rs.getString("modBy"));
 				cus.setAuthDate(rs.getString("authDate"));
 				cus.setAuthBy(rs.getString("authBy"));
 			}
-			
+			System.out.println("lm : "+cus.getRecStatus());
 			System.out.println("Data Viewed Successfully");
 			ret = "Data Viewed Successfully";
 			
@@ -232,8 +232,8 @@ public class LoginMain implements interDao{
 				cus.setCustAIFlag(rs.getString("custAIFlag"));
 				cus.setCreateDate(rs.getString("createDate"));
 				cus.setCreateBy(rs.getString("createBy"));
-				cus.setRecStatus(rs.getString("modDate"));
-				cus.setModDate(rs.getString("modBy"));
+				cus.setModDate(rs.getString("modDate"));
+				cus.setModBy(rs.getString("modBy"));
 				cus.setAuthDate(rs.getString("authDate"));
 				cus.setAuthBy(rs.getString("authBy"));
 				

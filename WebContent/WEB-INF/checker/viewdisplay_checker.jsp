@@ -119,9 +119,7 @@
      <% } %>
      
      <% if (request.getAttribute("ret").equals("View Particular Record to be Authorized")) { %>
-     <%String custCodeSession2 = (String)request.getAttribute("custCodeSession1");
-		session.setAttribute("custCodeSession3", custCodeSession2);%>
-	 <%=custCodeSession2%>
+     
     <div class='container'>
         <div class='custom-container1'>
             <div class='custom-form'>
@@ -132,7 +130,7 @@
                     	<table id= "tab" class="table table-striped">
   							<tr>
   								<th>Customer Code</th>
-  								<td>${cus.getCustCode()}</td>
+  								<td><input id="custCode" type="text" style="border:none;background-color: transparent;"  name="custCode" value="${cus.getCustCode()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Name</th>
@@ -164,11 +162,11 @@
   							</tr>
   							<tr>
   								<th>Customer Record Status</th>
-  								<td>${cus.getRecStatus()}</td>
+  								<td><input id="recStatus" type="text" style="border:none;background-color: transparent;" name="recStatus" value="${cus.getRecStatus()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Active / Inactive</th>
-  								<td>${cus.getCustAIFlag()}</td>
+  								<td><input id="custAIFlag" type="text" style="border:none;background-color: transparent;" name="custAIFlag" value="${cus.getCustAIFlag()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Creation Date</th>
