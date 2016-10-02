@@ -95,6 +95,11 @@ public class CustInfoVars {
 		
 	}
 	
+	public void setCusInfoVarsChecker(String custCode,String recStatus) {
+		this.custCode = custCode;
+		this.recStatus = recStatus;
+	}
+	
 	public String getCustCode() {
 		return custCode;
 	}
@@ -222,6 +227,8 @@ public class CustInfoVars {
 	public void setAuthBy(String authBy) {
 		this.authBy = authBy;
 	}
+
+	
 
 	
 

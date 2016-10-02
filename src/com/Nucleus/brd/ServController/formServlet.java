@@ -2,6 +2,7 @@ package com.Nucleus.brd.ServController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -113,16 +114,32 @@ public class formServlet extends HttpServlet {
 			System.out.println("Authorize: "+custCode + " "+ recStatus +" " +custAIFlag);
 			
 			System.out.println(userSession2);
+			System.out.println(createDate);
 			if(recStatus.equals("N")){
 				//send data to permanent table with recStatus A and hard delete from temporary
 				strRet = sl.setVarsCustCheckerA(custCode, custName, custAdd1, custAdd2, custPin, 
 						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,modDate,authBy);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatus.equals("D")){
 				// hard delete from permanent and temporary
+				strRet = sl.setVarsCustCheckerA(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,modDate,authBy);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatus.equals("M")){
 				//update data to permanent table with recStatus A and hard delete from temporary
+				strRet = sl.setVarsCustCheckerA(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,modDate,authBy);
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 			
 		}
@@ -130,17 +147,33 @@ public class formServlet extends HttpServlet {
 			String custCode = request.getParameter("custCode");
 			String recStatus = request.getParameter("recStatus");
 			String custAIFlag = request.getParameter("custAIFlag");
+			String authBy = userSession2;
 			
 			System.out.println("Reject: "+custCode + " "+ recStatus +" " +custAIFlag);
 			
 			if(recStatus.equals("N")){
 				//update the temporary record with recStatus with NR 
+				strRet = sl.setVarsCustCheckerB(custCode,recStatus);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatus.equals("M")){
-				//update the temporary record with recStatus with MR 
+				//update the temporary record with recStatus with MR
+				strRet = sl.setVarsCustCheckerB(custCode,recStatus);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatus.equals("D")){
-				//update the temporary record with recStatus with DR 
+				//update the temporary record with recStatus with DR
+				strRet = sl.setVarsCustCheckerB(custCode,recStatus);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/display_maker.jsp").forward(request, response);
 			}
 		}
 		else if(button.equals("Back")){

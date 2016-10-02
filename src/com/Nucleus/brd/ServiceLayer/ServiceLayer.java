@@ -87,6 +87,12 @@ public class ServiceLayer {
 		}
 	}
 	
+	public String setVarsCustCheckerB(String custCode,String recStatus) {
+		cus.setCusInfoVarsChecker(custCode,recStatus);		
+		checkerStr = lm.checkerReject(cus.getCustCode(),cus.getRecStatus());		
+		return checkerStr;		
+	}
+	
 	
 	public String setVarsCust(String custCode) {
 		cus.setCusInfoVars(custCode);

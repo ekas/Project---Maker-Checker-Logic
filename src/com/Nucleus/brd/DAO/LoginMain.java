@@ -9,7 +9,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import com.Nucleus.brd.ServiceLayer.CustInfoVars;
 
@@ -321,7 +324,7 @@ public class LoginMain implements interDao{
 			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag,
 			String createBy, String createDate, String modBy, String modDate, String authBy) {
 		
-		if(recStatus.equals("N")){
+		if(recStatus.equals("N") || recStatus.equals("M")){
 			try{
 				
 				DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
@@ -329,7 +332,14 @@ public class LoginMain implements interDao{
 				String authDate = dateFormat.format(cal.getTime());
 				System.out.println(authDate);
 				
+				if(createDate != null){
+					
+				}
+				createDate = dateFormat.format(cal.getTime());
+				//modDate = dateFormat.format(cal.getTime());				
+				//modBy = authBy;
 				
+				recStatus = "A"; // Changing Record status to authorized
 				
 				conn = jd.setConnection();
 				
@@ -353,17 +363,24 @@ public class LoginMain implements interDao{
 				pstmt.setString(11, createDate);
 				pstmt.setString(12, createBy);
 				pstmt.setString(13, modDate);
-				pstmt.setString(13, modDate);
-				pstmt.setString(13, modDate);
-				pstmt.setString(13, modDate);
+				pstmt.setString(14, modBy);
+				pstmt.setString(15, authDate);
+				pstmt.setString(16, authBy);
 				pstmt.executeQuery();
 				System.out.println("Data Entered into the Master Table");
 				ret = "Data Entered into the Master Table";
 				
 				
+				String query2 = "delete from tempCustEk where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Data Entered into the Master Table and Deleted from Temporary");
+				ret = "Data Entered into the Master Table and Deleted from Temporary";
+				
 			}
 			catch (SQLException e) {
-				ret = "Record not Added";
+				ret = "Record not Added or not found";
 				e.printStackTrace();
 			}
 			catch (ClassNotFoundException e) {
@@ -380,8 +397,97 @@ public class LoginMain implements interDao{
 				}
 			}
 		}
-		
-		
+		else if(recStatus.equals("D")){
+			try{
+				
+								
+				conn = jd.setConnection();
+				
+				String query1 = "delete from permCustEk where custCode = ?";
+				PreparedStatement pstmt1 = conn.prepareStatement(query1);
+				pstmt1.setString(1, custCode);
+				pstmt1.executeQuery();
+				System.out.println("Record Deleted from Permanent");
+				ret = "Record Deleted from Permanent";		
+				
+				String query2 = "delete from tempCustEk where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Record Deleted from Permanent and Temporary");
+				ret = "Record Deleted from Permanent and Temporary";
+				
+			}
+			catch (SQLException e) {
+				ret = "Record not Deleted or not found";
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try{
+					conn.commit();
+					conn.close();
+					System.out.println("Connection closed");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}		
+		return ret;
+	}
+	
+	@Override
+	public String checkerReject(String custCode,String recStatus) {	
+		try{
+			
+			
+			conn = jd.setConnection();
+			
+			if(recStatus.equals("N")){
+				String query2 = "update tempCustEk set recStatus = 'NR' where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Record Rejected and Status changed to NR");
+				ret = "Record Rejected and Status changed to NR";
+			}
+			else if(recStatus.equals("M")){
+				String query2 = "update tempCustEk set recStatus = 'MR' where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Record Rejected and Status changed to MR");
+				ret = "Record Rejected and Status changed to MR";
+			}
+			else if(recStatus.equals("D")){
+				String query2 = "update tempCustEk set recStatus = 'DR' where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Record Rejected and Status changed to DR");
+				ret = "Record Rejected and Status changed to DR";
+			}			
+		}
+		catch (SQLException e) {
+			ret = "Record not Deleted or not found";
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try{
+				conn.commit();
+				conn.close();
+				System.out.println("Connection closed");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return ret;
 	}
 }
