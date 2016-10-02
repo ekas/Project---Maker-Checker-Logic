@@ -69,6 +69,32 @@ public class CustInfoVars {
 		this.custCode = custCode;		
 	}
 	
+	public void setCusInfoVars(String custCode, String recStatus) {
+		this.custCode = custCode;
+		this.recStatus = recStatus;
+	}
+	
+	public void setCusInfoVarsChecker(String custCode, String custName, String custAdd1, String custAdd2, String custPin,
+			String custEmail, String custContact, String custPriContact, String recStatus, String custAIFlag,
+			String createBy, String createDate, String modBy, String modDate, String authBy) {
+		this.custCode = custCode;
+		this.custName = custName;
+		this.custAdd1 = custAdd1;
+		this.custAdd2 = custAdd2;
+		this.custPin = custPin;
+		this.custEmail = custEmail;
+		this.custContact = custContact;
+		this.custPriContact = custPriContact;
+		this.recStatus = recStatus;
+		this.custAIFlag = custAIFlag;
+		this.createDate = createDate;
+		this.createBy = createBy;
+		this.modDate = modDate;
+		this.modBy = modBy;
+		this.authBy = authBy;
+		
+	}
+	
 	public String getCustCode() {
 		return custCode;
 	}
@@ -196,6 +222,10 @@ public class CustInfoVars {
 	public void setAuthBy(String authBy) {
 		this.authBy = authBy;
 	}
+
+	
+
+	
 
 	
 }

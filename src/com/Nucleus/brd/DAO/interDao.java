@@ -14,5 +14,8 @@ public interface interDao {
 	public CustInfoVars viewRecord(String custCode);
 	public List<CustInfoVars> searchRecord();
 	public CustInfoVars modifyGetRecord(String custCode);
+	public String checkerAuthorize(String custCode, String custName, String custAdd1, String custAdd2, Float custPin,
+			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag, String createBy,
+			String createDate, String modBy, String modDate, String authBy);
 	
 }

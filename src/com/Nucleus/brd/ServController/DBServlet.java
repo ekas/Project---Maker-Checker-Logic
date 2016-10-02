@@ -50,6 +50,10 @@ public class DBServlet extends HttpServlet {
 				response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/maker/maker_cust_code.html");
 				//getServletContext().getRequestDispatcher("/WEB-INF/maker/maker_cust_code.html").forward(request, response);
 			}
+			else if(operation.equals("modify_master")){
+				response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/maker/maker_cust_code.html");
+				//getServletContext().getRequestDispatcher("/WEB-INF/maker/maker_searchall.html").forward(request, response);
+			}
 			else if(operation.equals("view")){
 				response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/maker/maker_cust_code.html");
 				//getServletContext().getRequestDispatcher("/WEB-INF/maker/maker_cust_code.html").forward(request, response);
@@ -93,6 +97,8 @@ public class DBServlet extends HttpServlet {
 		ServiceLayer sl = new ServiceLayer();
 		int ret = sl.setVars(user, pass);
 		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("userSession",user);
 		
 		if(ret == 1){	
 			response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/maker/maker_select.html");		

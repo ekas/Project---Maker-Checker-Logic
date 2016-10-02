@@ -134,31 +134,31 @@
   							</tr>
   							<tr>
   								<th>Customer Name</th>
-  								<td>${cus.getCustName()}</td>
+  								<td><input id="custName" type="text" style="border:none;background-color: transparent;"  name="custName" value="${cus.getCustName()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Address 1</th>
-  								<td>${cus.getCustAdd1()}</td>
+  								<td><input id="custAdd1" type="text" style="border:none;background-color: transparent;"  name="custAdd1" value="${cus.getCustAdd1()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Address 2</th>
-  								<td>${cus.getCustAdd2()}</td>
+  								<td><input id="custAdd2" type="text" style="border:none;background-color: transparent;"  name="custAdd2" value="${cus.getCustAdd2()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Pin Code</th>
-  								<td>${cus.getCustPin()}</td>
+  								<td><input id="custPin" type="text" style="border:none;background-color: transparent;"  name="custPin" value="${cus.getCustPin()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Email</th>
-  								<td>${cus.getCustEmail()}</td>
+  								<td><input id="custEmail" type="text" style="border:none;background-color: transparent;"  name="custEmail" value="${cus.getCustEmail()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Contact Number</th>
-  								<td>${cus.getCustContact()}</td>
+  								<td><input id="custContact" type="text" style="border:none;background-color: transparent;"  name="custContact" value="${cus.getCustContact()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Primary Contact Person</th>
-  								<td>${cus.getCustPriContact()}</td>
+  								<td><input id="custPriContact" type="text" style="border:none;background-color: transparent;"  name="custPriContact" value="${cus.getCustPriContact()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Customer Record Status</th>
@@ -170,27 +170,27 @@
   							</tr>
   							<tr>
   								<th>Creation Date</th>
-  								<td>${cus.getCreateDate()}</td>
+  								<td><input id="createDate" type="text" style="border:none;background-color: transparent;" name="createDate" value="${cus.getCreateDate()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Created By</th>
-  								<td>${cus.getCreateBy()}</td>
+  								<td><input id="createBy" type="text" style="border:none;background-color: transparent;" name="createBy" value="${cus.getCreateBy()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Modifying Date</th>
-  								<td>${cus.getModDate()}</td>
+  								<td><input id="modDate" type="text" style="border:none;background-color: transparent;" name="modDate" value="${cus.getModDate()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Modified By</th>
-  								<td>${cus.getModBy()}</td>
+  								<td><input id="modBy" type="text" style="border:none;background-color: transparent;" name="modBy" value="${cus.getModBy()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Authorized Date</th>
-  								<td>${cus.getAuthDate()}</td>
+  								<td><input id="authDate" type="text" style="border:none;background-color: transparent;" name="authDate" value="${cus.getAuthDate()}" readonly="readonly"></td>
   							</tr>
   							<tr>
   								<th>Authorized By</th>
-  								<td>${cus.getAuthBy()}</td>
+  								<td><input id="authBy" type="text" style="border:none;background-color: transparent;" name="authBy" value="${cus.getAuthBy()}" readonly="readonly"></td>
   							</tr>
 					</table>
 					

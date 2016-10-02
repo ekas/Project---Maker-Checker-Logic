@@ -316,4 +316,72 @@ public class LoginMain implements interDao{
 		}		
 	return cus;		
 	}
+	@Override
+	public String checkerAuthorize(String custCode, String custName, String custAdd1, String custAdd2, Float custPin,
+			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag,
+			String createBy, String createDate, String modBy, String modDate, String authBy) {
+		
+		if(recStatus.equals("N")){
+			try{
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
+				Calendar cal = Calendar.getInstance();
+				String authDate = dateFormat.format(cal.getTime());
+				System.out.println(authDate);
+				
+				
+				
+				conn = jd.setConnection();
+				
+				String query = "INSERT INTO permCustEk(custID,custCode,custName,custAdd1,custAdd2,custPin,custEmail," +
+						"custContact,custPriContact,recStatus,custAIFlag,createDate,createBy,modDate,modBy,authDate,authBy)"
+						+ "VALUES(sk_permCustEk.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				
+				
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				//pstmt.setInt(1, (count=count+1));
+				pstmt.setString(1, custCode);
+				pstmt.setString(2, custName);
+				pstmt.setString(3, custAdd1);
+				pstmt.setString(4, custAdd2);
+				pstmt.setFloat(5, custPin);
+				pstmt.setString(6, custEmail);
+				pstmt.setFloat(7, custContact);
+				pstmt.setString(8, custPriContact);
+				pstmt.setString(9, recStatus);
+				pstmt.setString(10, custAIFlag);
+				pstmt.setString(11, createDate);
+				pstmt.setString(12, createBy);
+				pstmt.setString(13, modDate);
+				pstmt.setString(13, modDate);
+				pstmt.setString(13, modDate);
+				pstmt.setString(13, modDate);
+				pstmt.executeQuery();
+				System.out.println("Data Entered into the Master Table");
+				ret = "Data Entered into the Master Table";
+				
+				
+			}
+			catch (SQLException e) {
+				ret = "Record not Added";
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try{
+					conn.commit();
+					conn.close();
+					System.out.println("Connection closed");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		return ret;
+	}
 }

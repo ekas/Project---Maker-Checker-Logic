@@ -18,6 +18,7 @@ public class ServiceLayer {
 	private String strValidateFieldCheck = null;
 	private String addRecordStr = null;
 	private String deleteRecordStr = null;
+	private String checkerStr = null;
 	List<CustInfoVars> custList = new ArrayList<CustInfoVars>();
 	
 	interDao lm = new LoginMain();
@@ -64,6 +65,29 @@ public class ServiceLayer {
 		}				
 	}
 	
+	public String setVarsCustCheckerA(String custCode, String custName, String custAdd1, String custAdd2, String custPin,
+			String custEmail, String custContact, String custPriContact, String recStatus, String custAIFlag,
+			String createBy, String createDate, String modBy, String modDate, String authBy) {
+
+		cus.setCusInfoVarsChecker(custCode, custName, custAdd1, custAdd2, custPin, 
+				custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,modDate,authBy);
+		
+		strValidateFieldCheck = vj.validateIndiFieldCheck(cus);
+		System.out.println(strValidateFieldCheck);
+		if(strValidateFieldCheck.equals("clear")){
+			addRecordStr = lm.checkerAuthorize(cus.getCustCode(), cus.getCustName(), cus.getCustAdd1(), 
+				cus.getCustAdd2(), new Float(cus.getCustPin()), cus.getCustEmail(), new Float(cus.getCustContact()), cus.getCustPriContact(), 
+				cus.getRecStatus(), cus.getCustAIFlag(), cus.getCreateBy(),cus.getCreateDate(),cus.getModBy(),cus.getModDate(),cus.getAuthBy());
+		
+		return addRecordStr;
+		}
+		else{
+			
+			return strValidateFieldCheck;
+		}
+	}
+	
+	
 	public String setVarsCust(String custCode) {
 		cus.setCusInfoVars(custCode);
 		deleteRecordStr = lm.deleteRecord(cus.getCustCode());
@@ -85,6 +109,8 @@ public class ServiceLayer {
 		return cus= lm.modifyGetRecord(cus.getCustCode());			
 	}
 	
+	
+	
 	public String getUser() {
 		return user;
 	}
@@ -100,6 +126,8 @@ public class ServiceLayer {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
+	
 	
 	
 
