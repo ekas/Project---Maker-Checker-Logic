@@ -67,7 +67,16 @@ public class DBServlet extends HttpServlet {
 			}
 		}
 		else if(button.equals("checker")){
-			response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/checker/checker_select.html");
+			if(operation.equals("viewChecker")){
+				
+			}
+			else if(operation.equals("viewCheckerSpecific")){
+				response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/checker/checker_cust_code.html");
+			}
+			else{
+				response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/checker/checker_select.html");
+			}
+			
 		}
 		
 	}

@@ -59,9 +59,49 @@ public class formServlet extends HttpServlet {
 			System.out.println("Old Record Status: "+recStatusSession);
 			System.out.println("NEW Record Status: "+recStatus);
 			
+			if(recStatusSession.equals("N") && recStatus.equals("M")){
+				//still stays New N and Modifies in temporary table 
+			}
+			else if(recStatusSession.equals("N") && recStatus.equals("D")){
+				//hard delete from temporary
+			}
+			else if(recStatusSession.equals("M") && recStatus.equals("M")){
+				//still stays Modify M and Modifies in temporary table 
+			}
+			else if(recStatusSession.equals("M") && recStatus.equals("D")){
+				//hard delete from temporary, stays in permanent 
+			}
+			else if(recStatusSession.equals("NR") && recStatus.equals("M")){
+				//change to Modify M and Modifies in temporary table 
+			}
+			else if(recStatusSession.equals("NR") && recStatus.equals("D")){
+				//hard delete from temporary 
+			}
+			else if(recStatusSession.equals("MR") && recStatus.equals("M")){
+				//change to Modify M and Modifies in temporary table 
+			}
+			else if(recStatusSession.equals("MR") && recStatus.equals("D")){
+				//hard delete from temporary, stays in permanent 
+			}
+			else if(recStatusSession.equals("MR") && recStatus.equals("D")){
+				//hard delete from temporary, stays in permanent 
+			}
+			else if(recStatusSession.equals("MR") && recStatus.equals("D")){
+				//hard delete from temporary, stays in permanent 
+			}
 		}
-		
-				
+		else if(button.equals("Authorize")){
+			String custCodeSession3 = (String)session.getAttribute("custCodeSession3");
+			
+			System.out.println("Cust Code "+custCodeSession3);
+			//System.out.println("NEW Record Status: "+recStatus);
+		}
+		else if(button.equals("Reject")){
+			String custCodeSession3 = (String)session.getAttribute("custCodeSession3");
+			
+			System.out.println("Cust Code2 "+custCodeSession3);
+			//System.out.println("NEW Record Status: "+recStatus);
+		}
 		
 	}
 
@@ -147,7 +187,17 @@ public class formServlet extends HttpServlet {
 				request.setAttribute("ret","Records list");
 				getServletContext().getRequestDispatcher("/WEB-INF/maker/viewdisplay_maker.jsp").forward(request, response);
 				
-			}		
+			}
+			else if(operation.equals("viewCheckerSpecific")){
+				String custCode = request.getParameter("custCode");
+				cus = sl.setVarsCust2(custCode);
+				
+				request.setAttribute("cus", cus);
+				request.setAttribute("custCodeSession1", custCode);
+				request.setAttribute("ret","View Particular Record to be Authorized");
+				getServletContext().getRequestDispatcher("/WEB-INF/checker/viewdisplay_checker.jsp").forward(request, response);
+			}
+			
 	}
 
 }

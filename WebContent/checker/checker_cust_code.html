@@ -56,27 +56,32 @@
       
       
 
-      <form action="http://localhost:8081/WebApp2CustInventoryBrd/DBServlet" method="get">
-
+      <form action="http://localhost:8081/WebApp2CustInventoryBrd/formServlet" method="post">
+		<!--  
       <div class="form-group">
           <label>Operation*</label>
           <select id="operation" class="custom-combobox" name="operation">
             <option value="-1">Select one Operation</option>
-            <option value="viewChecker">View</option>
-            <option value="viewCheckerSpecific">View Specific</option>
+            <option value="add">Add</option>
+            <option value="modify">Modify</option>
+            <option value="view">View</option>
+            <option value="delete">Delete</option>
+            <option value="search all">Search all</option>
           </select>
-      </div><!-- 
-      <div class="form-group">
+      </div>-->
+      <!--2-->
+        <div class="form-group">
           <label> Customer Code*</label>
           <input id="custCode" type="text" class="form-control"  placeholder="Enter Customer Code" name="custCode">
-      </div>-->
-      <button type="submit" id="btn-update" class="btn-update btn btn-default" name="btn" value="checker">Submit</button>
+        </div>
+        <button type="submit" id="btn-update" class="btn-update btn btn-default" name="btn" value="checker">Submit</button>
+        
       </form>
 
     </div>
   </div>
 
-  <!-- **********************Footer Starts*********************** 
+  <!-- **********************Footer Starts***********************
   <div class="footer">
     <div class="container">
       <div class="row">
@@ -100,24 +105,25 @@
 
     </div>
   </div>
-  **********************Footer ends*********************** -->
+   **********************Footer ends*********************** -->
 
 
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
+  
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
+  
   <script type="text/javascript">
     $(function(){
       $("#btn-update").click(function(){
-        var operation = $('#operation').val();
+        var custCode = $('#custCode').val();
 
-        console.log(operation);
-        if (operation == "-1") {
+        console.log(custCode);
+        if (custCode.length === 0) {
           alert("all Fields are mandatory");
           return false;
         }

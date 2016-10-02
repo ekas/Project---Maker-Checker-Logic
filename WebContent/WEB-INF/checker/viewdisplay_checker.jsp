@@ -60,11 +60,11 @@
             </div>
         </div>
     </nav>
-    
+    <% if (request.getAttribute("ret").equals("Records list")) { %>
     <div class='container'>
         <div class='custom-container1'>
             <div class='custom-form'>
-                <form name='myForm' action='http://localhost:8081/WebApp2CustInventoryBrd/maker/maker_select.html' method='get'>
+                <form name='myForm' action='http://localhost:8081/WebApp2CustInventoryBrd/formServlet' method='get'>
                     <h2>Hello</h2>
                     <h5><%= request.getAttribute("ret")%> </h5>                    
                     
@@ -87,6 +87,9 @@
   								<th>Authorized Date</th>
   								<th>Authorized By</th>
   							</tr>
+  								
+  								
+  							<c:forEach var = "cus" items = "${cus}">
   								<tr>
   									<td>${cus.getCustCode()}</td>  								
   									<td>${cus.getCustName()}</td>  								
@@ -105,6 +108,7 @@
   									<td>${cus.getAuthDate()}</td>  								
   									<td>${cus.getAuthBy()}</td>
   								</tr>
+  						</c:forEach>
 					</table>
 					
                     <input class='custom-button btn btn-default' id='button' type='submit' name='btn' value='Back'>
@@ -112,7 +116,94 @@
             </div>
         </div>
     </div>
-    
+     <% } %>
+     
+     <% if (request.getAttribute("ret").equals("View Particular Record to be Authorized")) { %>
+     <%String custCodeSession2 = (String)request.getAttribute("custCodeSession1");
+		session.setAttribute("custCodeSession3", custCodeSession2);%>
+	 <%=custCodeSession2%>
+    <div class='container'>
+        <div class='custom-container1'>
+            <div class='custom-form'>
+                <form name='myForm' action='http://localhost:8081/WebApp2CustInventoryBrd/formServlet' method='get'>
+                    <h2>Hello</h2>
+                    <h5><%= request.getAttribute("ret")%> </h5>                    
+                    
+                    	<table id= "tab" class="table table-striped">
+  							<tr>
+  								<th>Customer Code</th>
+  								<td>${cus.getCustCode()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Name</th>
+  								<td>${cus.getCustName()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Address 1</th>
+  								<td>${cus.getCustAdd1()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Address 2</th>
+  								<td>${cus.getCustAdd2()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Pin Code</th>
+  								<td>${cus.getCustPin()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Email</th>
+  								<td>${cus.getCustEmail()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Contact Number</th>
+  								<td>${cus.getCustContact()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Primary Contact Person</th>
+  								<td>${cus.getCustPriContact()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Record Status</th>
+  								<td>${cus.getRecStatus()}</td>
+  							</tr>
+  							<tr>
+  								<th>Customer Active / Inactive</th>
+  								<td>${cus.getCustAIFlag()}</td>
+  							</tr>
+  							<tr>
+  								<th>Creation Date</th>
+  								<td>${cus.getCreateDate()}</td>
+  							</tr>
+  							<tr>
+  								<th>Created By</th>
+  								<td>${cus.getCreateBy()}</td>
+  							</tr>
+  							<tr>
+  								<th>Modifying Date</th>
+  								<td>${cus.getModDate()}</td>
+  							</tr>
+  							<tr>
+  								<th>Modified By</th>
+  								<td>${cus.getModBy()}</td>
+  							</tr>
+  							<tr>
+  								<th>Authorized Date</th>
+  								<td>${cus.getAuthDate()}</td>
+  							</tr>
+  							<tr>
+  								<th>Authorized By</th>
+  								<td>${cus.getAuthBy()}</td>
+  							</tr>
+					</table>
+					
+                    <input class='custom-button btn btn-default' id='button' type='submit' name='btn' value='Authorize'>
+                    <input class='custom-button btn btn-default' id='button' type='submit' name='btn' value='Reject'>
+                    <input class='custom-button btn btn-default' id='button' type='submit' name='btn' value='Back'>
+                </form>
+            </div>
+        </div>
+    </div>
+     <% } %>
      
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
