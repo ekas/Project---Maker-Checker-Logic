@@ -57,8 +57,7 @@ public class formServlet extends HttpServlet {
 			String custAIFlag = request.getParameter("custAIFlag");
 			String createBy = request.getParameter("createBy");
 			String createDate = request.getParameter("createDate");
-			String modBy = request.getParameter("modBy");
-			String modDate = request.getParameter("modDate");
+			String modBy = userSession2;
 			String authBy = request.getParameter("authBy");
 			String authDate = request.getParameter("authDate");
 			
@@ -69,27 +68,75 @@ public class formServlet extends HttpServlet {
 			
 			if(recStatusSession.equals("N") && recStatus.equals("M")){
 				//still stays New N and Modifies in temporary table 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("N") && recStatus.equals("D")){
 				//hard delete from temporary
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("M") && recStatus.equals("M")){
 				//still stays Modify M and Modifies in temporary table 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("M") && recStatus.equals("D")){
 				//hard delete from temporary, stays in permanent 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("NR") && recStatus.equals("M")){
 				//change to Modify M and Modifies in temporary table 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("NR") && recStatus.equals("D")){
 				//hard delete from temporary 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("MR") && recStatus.equals("M")){
 				//change to Modify M and Modifies in temporary table 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 			else if(recStatusSession.equals("MR") && recStatus.equals("D")){
 				//hard delete from temporary, stays in permanent 
+				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+				
+				System.out.println(strRet);
+				request.setAttribute("ret",strRet);
+				getServletContext().getRequestDispatcher("/WEB-INF/maker/display_maker.jsp").forward(request, response);
 			}
 		}
 		else if(button.equals("Authorize")){
@@ -178,6 +225,9 @@ public class formServlet extends HttpServlet {
 		}
 		else if(button.equals("Back")){
 			response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/checker/checker_select.html");
+		}
+		else if(button.equals("Back to Select")){
+			response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/checker/maker_select.html");
 		}
 		else{
 			response.sendRedirect("http://localhost:8081/WebApp2CustInventoryBrd/index.html");

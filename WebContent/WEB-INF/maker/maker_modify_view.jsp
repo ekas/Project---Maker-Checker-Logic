@@ -162,6 +162,7 @@ session.setAttribute("recStatus2", recStatus);%>
           <input id="authBy" type="text" class="form-control" placeholder="Enter Authorizer ID" name="authBy" value="${cus.getAuthBy()}" readonly="readonly">
         </div> 
         <button type="submit" id="btn-update" class="btn-update btn btn-default" name="btn" value="maker_modify">Modify</button>
+        <button type="submit" id="btn-update" class="btn-update btn btn-default" name="btn" value="Back to Select">Modify</button>
         
       </form>
 

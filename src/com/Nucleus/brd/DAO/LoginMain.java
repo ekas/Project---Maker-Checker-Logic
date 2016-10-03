@@ -490,4 +490,170 @@ public class LoginMain implements interDao{
 		}
 		return ret;
 	}
+	@Override
+	public String modifyMakerRecord(String custCode, String custName, String custAdd1, String custAdd2, Float custPin,
+			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag,
+			String createBy, String createDate, String modBy, String authDate, String authBy, String recStatusSession) {
+
+		if(recStatusSession.equals("N") && recStatus.equals("M")){
+			try{
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
+				Calendar cal = Calendar.getInstance();
+				String modDate = dateFormat.format(cal.getTime());
+				System.out.println(authDate);
+				
+				if(createDate != null){
+					
+				}
+				//createDate = dateFormat.format(cal.getTime());			
+				//modBy = authBy;
+				
+				recStatus = "N"; // Changing Record status to authorized
+				
+				conn = jd.setConnection();
+				
+				String query = "update tempCustEk set custName = ? , custAdd1 = ?, custAdd2 = ?, custPin = ?,custEmail = ?, custContact = ?,"
+						+ "custPriContact = ?, recStatus = ?, custAIFlag = ?, createDate = ?, createBy = ?, modDate = ?,"
+						+ "modBy = ?, authDate = ?, authBy = ? where custCode = ?";
+				
+				
+				PreparedStatement pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1, custName);
+				pstmt.setString(2, custAdd1);
+				pstmt.setString(3, custAdd2);
+				pstmt.setFloat(4, custPin);
+				pstmt.setString(5, custEmail);
+				pstmt.setFloat(6, custContact);
+				pstmt.setString(7, custPriContact);
+				pstmt.setString(8, recStatus);
+				pstmt.setString(9, custAIFlag);
+				pstmt.setString(10, createDate);
+				pstmt.setString(11, createBy);
+				pstmt.setString(12, modDate);
+				pstmt.setString(13, recStatusSession);
+				pstmt.setString(14, authDate);
+				pstmt.setString(15, authBy);
+				pstmt.setString(16, custCode);
+				pstmt.executeQuery();
+				System.out.println("Data Updated to Temporary Table with Record Status N");
+				ret = "Data Updated to Temporary Table with Record Status N";
+			}
+			catch (SQLException e) {
+				ret = "Record not Updated or not found";
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try{
+					conn.commit();
+					conn.close();
+					System.out.println("Connection closed");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		else if((recStatusSession.equals("N") && recStatus.equals("D")) || (recStatusSession.equals("M") && recStatus.equals("D")) ||
+					(recStatusSession.equals("NR") && recStatus.equals("D")) ||(recStatusSession.equals("MR") && recStatus.equals("D"))){
+			try{
+				
+								
+				conn = jd.setConnection();				
+				String query2 = "delete from tempCustEk where custCode = ?";
+				PreparedStatement pstmt2 = conn.prepareStatement(query2);
+				pstmt2.setString(1, custCode);
+				pstmt2.executeQuery();
+				System.out.println("Record Deleted Temporary");
+				ret = "Record Deleted Temporary";
+				
+			}
+			catch (SQLException e) {
+				ret = "Record not Deleted or not found";
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try{
+					conn.commit();
+					conn.close();
+					System.out.println("Connection closed");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		else if(recStatusSession.equals("M") && recStatus.equals("M") || (recStatusSession.equals("NR") && recStatus.equals("M")) || 
+					(recStatusSession.equals("MR") && recStatus.equals("M"))){
+			try{
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
+				Calendar cal = Calendar.getInstance();
+				String modDate = dateFormat.format(cal.getTime());
+				//System.out.println(authDate);
+				
+				//if(createDate != null){
+					
+				//}
+				//createDate = dateFormat.format(cal.getTime());			
+				//modBy = authBy;
+				
+				recStatus = "M"; // Changing Record status to authorized
+				
+				conn = jd.setConnection();
+				
+				String query = "update tempCustEk set custName = ? , custAdd1 = ?, custAdd2 = ?, custPin = ?,custEmail = ?, custContact = ?,"
+						+ "custPriContact = ?, recStatus = ?, custAIFlag = ?, createDate = ?, createBy = ?, modDate = ?,"
+						+ "modBy = ?, authDate = ?, authBy = ? where custCode = ?";
+				
+				
+				PreparedStatement pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1, custName);
+				pstmt.setString(2, custAdd1);
+				pstmt.setString(3, custAdd2);
+				pstmt.setFloat(4, custPin);
+				pstmt.setString(5, custEmail);
+				pstmt.setFloat(6, custContact);
+				pstmt.setString(7, custPriContact);
+				pstmt.setString(8, recStatus);
+				pstmt.setString(9, custAIFlag);
+				pstmt.setString(10, createDate);
+				pstmt.setString(11, createBy);
+				pstmt.setString(12, modDate);
+				pstmt.setString(13, recStatusSession);
+				pstmt.setString(14, authDate);
+				pstmt.setString(15, authBy);
+				pstmt.setString(16, custCode);
+				pstmt.executeQuery();
+				System.out.println("Data Updated to Temporary Table with Record Status M");
+				ret = "Data Updated to Temporary Table with Record Status M";
+			}
+			catch (SQLException e) {
+				ret = "Record not Updated or not found";
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				try{
+					conn.commit();
+					conn.close();
+					System.out.println("Connection closed");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}			
+		}		
+		return ret;
+	}
 }

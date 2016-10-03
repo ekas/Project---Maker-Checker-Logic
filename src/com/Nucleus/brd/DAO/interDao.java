@@ -26,4 +26,7 @@ public interface interDao {
 	
 	public String checkerReject(String custCode,String recStatus);
 	
+	public String modifyMakerRecord(String custCode, String custName, String custAdd1, String custAdd2, Float custPin,
+			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag, String createBy,
+			String createDate, String modBy, String authDate, String authBy, String recStatusSession);	
 }

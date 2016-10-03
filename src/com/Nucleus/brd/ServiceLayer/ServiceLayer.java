@@ -19,6 +19,7 @@ public class ServiceLayer {
 	private String addRecordStr = null;
 	private String deleteRecordStr = null;
 	private String checkerStr = null;
+	private String makerStr = null;
 	List<CustInfoVars> custList = new ArrayList<CustInfoVars>();
 	
 	interDao lm = new LoginMain();
@@ -72,19 +73,27 @@ public class ServiceLayer {
 		cus.setCusInfoVarsChecker(custCode, custName, custAdd1, custAdd2, custPin, 
 				custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,modDate,authBy);
 		
-		strValidateFieldCheck = vj.validateIndiFieldCheck(cus);
-		System.out.println(strValidateFieldCheck);
-		if(strValidateFieldCheck.equals("clear")){
-			addRecordStr = lm.checkerAuthorize(cus.getCustCode(), cus.getCustName(), cus.getCustAdd1(), 
-				cus.getCustAdd2(), new Float(cus.getCustPin()), cus.getCustEmail(), new Float(cus.getCustContact()), cus.getCustPriContact(), 
-				cus.getRecStatus(), cus.getCustAIFlag(), cus.getCreateBy(),cus.getCreateDate(),cus.getModBy(),cus.getModDate(),cus.getAuthBy());
-		
-		return addRecordStr;
+		if(recStatus.equals("N") || recStatus.equals("M")){
+			
+			strValidateFieldCheck = vj.validateIndiFieldCheck(cus);			
+			System.out.println(strValidateFieldCheck);
+			
+			if(strValidateFieldCheck.equals("clear")){
+				checkerStr = lm.checkerAuthorize(cus.getCustCode(), cus.getCustName(), cus.getCustAdd1(), 
+					cus.getCustAdd2(), new Float(cus.getCustPin()), cus.getCustEmail(), new Float(cus.getCustContact()), cus.getCustPriContact(), 
+					cus.getRecStatus(), cus.getCustAIFlag(), cus.getCreateBy(),cus.getCreateDate(),cus.getModBy(),cus.getModDate(),cus.getAuthBy());
+				return checkerStr;
+			}
+			else{
+				
+				return strValidateFieldCheck;
+			}
 		}
 		else{
-			
-			return strValidateFieldCheck;
-		}
+			return checkerStr = lm.checkerAuthorize(cus.getCustCode(), cus.getCustName(), cus.getCustAdd1(), 
+					cus.getCustAdd2(), new Float(cus.getCustPin()), cus.getCustEmail(), new Float(cus.getCustContact()), cus.getCustPriContact(), 
+					cus.getRecStatus(), cus.getCustAIFlag(), cus.getCreateBy(),cus.getCreateDate(),cus.getModBy(),cus.getModDate(),cus.getAuthBy());
+			}		
 	}
 	
 	public String setVarsCustCheckerB(String custCode,String recStatus) {
@@ -93,6 +102,25 @@ public class ServiceLayer {
 		return checkerStr;		
 	}
 	
+	public String setVarsCustModifyTemp(String custCode, String custName, String custAdd1, String custAdd2,
+			String custPin, String custEmail, String custContact, String custPriContact, String recStatus,
+			String custAIFlag, String createBy, String createDate, String modBy, String authDate, String authBy,
+			String recStatusSession) {
+		
+		cus.setCusInfoVarsMaker(custCode, custName, custAdd1, custAdd2, custPin, 
+				custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy);
+		
+		makerStr = lm.modifyMakerRecord(cus.getCustCode(), cus.getCustName(), cus.getCustAdd1(), 
+				cus.getCustAdd2(), new Float(cus.getCustPin()), cus.getCustEmail(), new Float(cus.getCustContact()), cus.getCustPriContact(), 
+				cus.getRecStatus(), cus.getCustAIFlag(), cus.getCreateBy(),cus.getCreateDate(),cus.getModBy(),cus.getAuthDate(),cus.getAuthBy(),recStatusSession);
+		
+		return makerStr;
+	}
+	
+	public String setVarsCustModifyPerm(){
+
+		return makerStr;
+	}
 	
 	public String setVarsCust(String custCode) {
 		cus.setCusInfoVars(custCode);
@@ -132,6 +160,7 @@ public class ServiceLayer {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
 	
 	
 	
