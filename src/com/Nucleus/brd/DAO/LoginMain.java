@@ -493,7 +493,7 @@ public class LoginMain implements interDao{
 	@Override
 	public String modifyMakerRecord(String custCode, String custName, String custAdd1, String custAdd2, Float custPin,
 			String custEmail, Float custContact, String custPriContact, String recStatus, String custAIFlag,
-			String createBy, String createDate, String modBy, String authDate, String authBy, String recStatusSession) {
+			String createBy, String createDate, String modBy, String authDate, String authBy, String recStatusSession, String userSession2) {
 
 		if(recStatusSession.equals("N") && recStatus.equals("M")){
 			try{
@@ -501,13 +501,13 @@ public class LoginMain implements interDao{
 				DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
 				Calendar cal = Calendar.getInstance();
 				String modDate = dateFormat.format(cal.getTime());
-				System.out.println(authDate);
+				System.out.println(modDate);
 				
-				if(createDate != null){
+				/*if(createDate != null){
 					
-				}
-				//createDate = dateFormat.format(cal.getTime());			
-				//modBy = authBy;
+				}*/
+				createDate = dateFormat.format(cal.getTime());			
+				modBy = userSession2;
 				
 				recStatus = "N"; // Changing Record status to authorized
 				
@@ -531,7 +531,7 @@ public class LoginMain implements interDao{
 				pstmt.setString(10, createDate);
 				pstmt.setString(11, createBy);
 				pstmt.setString(12, modDate);
-				pstmt.setString(13, recStatusSession);
+				pstmt.setString(13, modBy);
 				pstmt.setString(14, authDate);
 				pstmt.setString(15, authBy);
 				pstmt.setString(16, custCode);
@@ -604,7 +604,7 @@ public class LoginMain implements interDao{
 					
 				//}
 				//createDate = dateFormat.format(cal.getTime());			
-				//modBy = authBy;
+				modBy = userSession2;
 				
 				recStatus = "M"; // Changing Record status to authorized
 				
@@ -628,7 +628,7 @@ public class LoginMain implements interDao{
 				pstmt.setString(10, createDate);
 				pstmt.setString(11, createBy);
 				pstmt.setString(12, modDate);
-				pstmt.setString(13, recStatusSession);
+				pstmt.setString(13, modBy);
 				pstmt.setString(14, authDate);
 				pstmt.setString(15, authBy);
 				pstmt.setString(16, custCode);

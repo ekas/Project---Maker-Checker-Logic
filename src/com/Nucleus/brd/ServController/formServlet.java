@@ -69,7 +69,7 @@ public class formServlet extends HttpServlet {
 			if(recStatusSession.equals("N") && recStatus.equals("M")){
 				//still stays New N and Modifies in temporary table 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -78,7 +78,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("N") && recStatus.equals("D")){
 				//hard delete from temporary
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -87,7 +87,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("M") && recStatus.equals("M")){
 				//still stays Modify M and Modifies in temporary table 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -96,7 +96,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("M") && recStatus.equals("D")){
 				//hard delete from temporary, stays in permanent 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -105,7 +105,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("NR") && recStatus.equals("M")){
 				//change to Modify M and Modifies in temporary table 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -114,7 +114,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("NR") && recStatus.equals("D")){
 				//hard delete from temporary 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -123,7 +123,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("MR") && recStatus.equals("M")){
 				//change to Modify M and Modifies in temporary table 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
@@ -132,7 +132,7 @@ public class formServlet extends HttpServlet {
 			else if(recStatusSession.equals("MR") && recStatus.equals("D")){
 				//hard delete from temporary, stays in permanent 
 				strRet = sl.setVarsCustModifyTemp(custCode, custName, custAdd1, custAdd2, custPin, 
-						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession);
+						custEmail, custContact, custPriContact, recStatus, custAIFlag, createBy,createDate,modBy,authDate,authBy,recStatusSession,userSession2);
 				
 				System.out.println(strRet);
 				request.setAttribute("ret",strRet);
