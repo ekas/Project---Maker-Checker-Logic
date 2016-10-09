@@ -1,4 +1,4 @@
-package com.Nucleus.brd.ServiceLayer;
+package com.brd.ServiceLayer;
 
 public class CustInfoVars {
 	private String custCode;

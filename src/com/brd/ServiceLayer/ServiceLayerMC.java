@@ -1,6 +1,6 @@
-package com.Nucleus.brd.DAO;
+package com.brd.ServiceLayer;
 
-public class MakerCheckerDao {
+public class ServiceLayerMC {
 
 	/**
 	 * @param args

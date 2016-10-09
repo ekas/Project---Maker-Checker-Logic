@@ -1,10 +1,10 @@
-package com.Nucleus.brd.ServiceLayer;
+package com.brd.ServiceLayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Nucleus.brd.DAO.LoginMain;
-import com.Nucleus.brd.DAO.interDao;
+import com.brd.DAO.LoginMain;
+import com.brd.DAO.interDao;
 
 
 

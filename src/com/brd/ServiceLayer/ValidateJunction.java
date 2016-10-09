@@ -1,4 +1,4 @@
-package com.Nucleus.brd.ServiceLayer;
+package com.brd.ServiceLayer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

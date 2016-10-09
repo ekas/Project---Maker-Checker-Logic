@@ -1,8 +1,8 @@
- package com.Nucleus.brd.DAO;
+ package com.brd.DAO;
 
 import java.util.List;
 
-import com.Nucleus.brd.ServiceLayer.CustInfoVars;
+import com.brd.ServiceLayer.CustInfoVars;
 
 
 public interface interDao {

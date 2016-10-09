@@ -1,4 +1,4 @@
-package com.Nucleus.brd.DAO;
+package com.brd.DAO;
 
 import java.sql.*;
 public class JDBConnection {

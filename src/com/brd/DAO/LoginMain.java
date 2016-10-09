@@ -1,4 +1,4 @@
-package com.Nucleus.brd.DAO;
+package com.brd.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
-import com.Nucleus.brd.ServiceLayer.CustInfoVars;
+import com.brd.ServiceLayer.CustInfoVars;
 
 public class LoginMain implements interDao{
 	JDBConnection jd = new JDBConnection();

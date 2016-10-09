@@ -1,4 +1,4 @@
-package com.Nucleus.brd.ServController;
+package com.brd.ServController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.Nucleus.brd.ServiceLayer.CustInfoVars;
-import com.Nucleus.brd.ServiceLayer.ServiceLayer;
+import com.brd.ServiceLayer.CustInfoVars;
+import com.brd.ServiceLayer.ServiceLayer;
 
 /**
  * Servlet implementation class formServlet
